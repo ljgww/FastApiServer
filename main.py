@@ -14,6 +14,7 @@ app = FastAPI(
 
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
 pages = APIRouter(prefix="/page", include_in_schema=False)
+api = APIRouter(prefix="/api")
 
 
 @app.get("/", include_in_schema=False)
@@ -21,7 +22,7 @@ async def root(request: Request) -> RedirectResponse:
     return RedirectResponse(url=request.url_for("page_home"))
 
 
-@app.get("/api")
+@api.get("/welcome")
 async def api_welcome() -> dict[str, str]:
     return {"message": "Hello, world!"}
 
@@ -33,6 +34,7 @@ async def health() -> dict[str, str]:
 
 @pages.get("", response_class=HTMLResponse)
 async def page_home(request: Request, name: str = "Visitor") -> HTMLResponse:
+    """Serve /page: the empty route suffix adds nothing to the router prefix."""
     return templates.TemplateResponse(
         request=request,
         name="home.html",
@@ -42,9 +44,10 @@ async def page_home(request: Request, name: str = "Visitor") -> HTMLResponse:
 
 @pages.get("/welcome", response_class=HTMLResponse)
 async def page_welcome(request: Request) -> HTMLResponse:
+    """Serve /page/welcome; browser JavaScript fetches /api/welcome."""
     return templates.TemplateResponse(
         request=request,
-        name="api.html",
+        name="api_result.html",
         context={
             "title": "Welcome message",
             "description": "Fetch the welcome message from the API.",
@@ -58,10 +61,10 @@ async def page_welcome(request: Request) -> HTMLResponse:
 async def page_health(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(
         request=request,
-        name="api.html",
+        name="api_result.html",
         context={
             "title": "Server health",
-            "description": "Check the server's current health using the API.",
+            "description": "Run a quick server check using /health.",
             "api_url": str(request.url_for("health")),
             "field": "status",
         },
@@ -69,3 +72,4 @@ async def page_health(request: Request) -> HTMLResponse:
 
 
 app.include_router(pages)
+app.include_router(api)
