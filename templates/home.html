@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Hello, {{ visitor }}!</h1>
+  <p>This page merges Python values into a Jinja2 template. Enter a name to try it.</p>
+  <form action="{{ url_for('page_home') }}" method="get">
+    <label for="name">Your name</label>
+    <input id="name" name="name" value="{{ visitor }}" required>
+    <button type="submit">Say hello</button>
+  </form>
+  <h2>Explore the API</h2>
+  <ul>
+    <li><a href="{{ url_for('page_welcome') }}">Welcome message</a> — read the message from <code>GET /api</code>.</li>
+    <li><a href="{{ url_for('page_health') }}">Server health</a> — read the status from <code>GET /health</code>.</li>
+    <li><a href="{{ url_for('swagger_ui_html') }}">API documentation</a> — explore and try the endpoints at <code>/docs</code>.</li>
+  </ul>
+{% endblock %}

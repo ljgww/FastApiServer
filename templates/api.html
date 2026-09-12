@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{ title }}</h1>
+  <p>{{ description }}</p>
+  <p>API endpoint: <a href="{{ api_url }}">{{ api_url }}</a></p>
+  <p id="result" role="status" aria-live="polite">Loading…</p>
+  <pre id="payload" aria-label="API JSON response"></pre>
+  <button id="refresh" type="button">Refresh</button>
+  <noscript><p>Enable JavaScript to load the result, or follow the API endpoint link above.</p></noscript>
+  <script>
+    const apiUrl = {{ api_url | tojson }};
+    const field = {{ field | tojson }};
+    const result = document.getElementById("result");
+    const payload = document.getElementById("payload");
+    const refresh = document.getElementById("refresh");
+
+    async function load() {
+      refresh.disabled = true;
+      result.textContent = "Loading…";
+      payload.textContent = "";
+      try {
+        const response = await fetch(apiUrl, { cache: "no-store", signal: AbortSignal.timeout(10000) });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        result.textContent = `${field}: ${data[field]}`;
+        payload.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        result.textContent = `Could not load the API response (${error.message}). Try refreshing.`;
+      } finally {
+        refresh.disabled = false;
+      }
+    }
+
+    refresh.addEventListener("click", load);
+    load();
+  </script>
+{% endblock %}
