@@ -39,6 +39,10 @@ HTML routes use the `/page` router prefix; application API routes use `/api`. Th
 
 `@pages.get("")` uses an empty suffix, so its full path is the router prefix `/page` plus `""`, which equals `/page`. It serves the home page. `/page/` redirects to `/page` with FastAPI's default slash handling; `/` is a separate route that redirects to `/page`. `response_class=HTMLResponse` specifies an HTML response and does not affect the URL.
 
+## HTTP errors
+
+HTTP errors such as unknown routes and unsupported methods return JSON with an `Error` string combining the HTTP status code and standard description, for example `{"Error":"404 Not Found"}` or `{"Error":"405 Method Not Allowed"}`. Explicit HTTP exceptions with a custom detail append that detail after the standard description. The response keeps its HTTP status code and exception headers. Request validation errors retain FastAPI's default format.
+
 ## Template example
 
 Open http://127.0.0.1:8000/page?name=Alex to see `Hello, Alex!`, or use the name form on the home page. The route passes Python values in a context dictionary to Jinja2, which merges them into `templates/home.html` using `{{ visitor }}`. HTML values are automatically escaped.

@@ -1,10 +1,12 @@
 """Minimal FastAPI application."""
 
+from http import HTTPStatus
 from pathlib import Path
 
 from fastapi import APIRouter, FastAPI, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 app = FastAPI(
     title="FastAPI Server",
@@ -15,6 +17,27 @@ app = FastAPI(
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
 pages = APIRouter(prefix="/page", include_in_schema=False)
 api = APIRouter(prefix="/api")
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(
+    request: Request, exc: StarletteHTTPException
+) -> JSONResponse:
+    """Format routing and explicitly raised HTTP errors consistently."""
+    try:
+        description = HTTPStatus(exc.status_code).phrase
+    except ValueError:
+        description = "HTTP Error"
+
+    message = f"{exc.status_code} {description}"
+    if exc.detail and exc.detail != description:
+        message += f": {exc.detail}"
+
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"Error": message},
+        headers=exc.headers,
+    )
 
 
 @app.get("/", include_in_schema=False)

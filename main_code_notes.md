@@ -207,7 +207,15 @@ These are two separate HTTP requests: one for HTML and one for JSON. Clicking Re
 
 ### Unmatched paths and methods
 
-An unknown path such as `/pages` returns HTTP 404. An unsupported method on an existing route, such as `POST /api/welcome`, returns HTTP 405. The current application relies on FastAPI's default handling for these responses.
+An unknown path such as `/pages` returns HTTP 404 with `{"Error":"404 Not Found"}`. An unsupported method on an existing route, such as `POST /api/welcome`, returns HTTP 405 with `{"Error":"405 Method Not Allowed"}`.
+
+### Custom HTTP exception handler
+
+`http_exception_handler` is registered using `@app.exception_handler(StarletteHTTPException)`. Registering the Starlette base exception handles both router-generated errors and explicitly raised FastAPI HTTP exceptions. When one of these exceptions occurs, FastAPI invokes this handler to build the response.
+
+`HTTPStatus` from Python's standard library supplies the standard HTTP description for the numeric status code. The handler combines them into a string under the JSON key `Error`. If the exception contains a different custom detail, it is appended: an HTTP 404 with detail `User not found` becomes `{"Error":"404 Not Found: User not found"}`. An unrecognized status code uses `HTTP Error` as the description.
+
+`JSONResponse` sends this body while retaining the original status code and exception headers, including the `Allow` header for a 405 response. These are HTTP status descriptions, independent of HTML. This handler covers HTTP exceptions; request validation errors and unexpected Python exceptions are separate error categories and retain their existing behavior.
 
 ## Automatic API documentation
 
