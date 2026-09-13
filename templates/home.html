@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Hello, {{ visitor }}!</h1>
+  <h2>Hello, {{ visitor }}!</h2>
   <p>This page merges Python values into a Jinja2 template. Enter a name to try it.</p>
   <form action="{{ url_for('page_home') }}" method="get">
     <label for="name">Your name</label>
@@ -14,4 +14,5 @@
     <li><a href="{{ url_for('swagger_ui_html') }}">API documentation</a> — explore and try the endpoints at <code>/docs</code>.</li>
     <li><a href="https://github.com/ljgww/FastApiServer">GitHub repo</a></li>
   </ul>
+  
 {% endblock %}

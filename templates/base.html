@@ -11,6 +11,9 @@
     main { background: white; border: 1px solid #d7deeb; border-radius: 1rem; padding: 2rem; }
     h1 { line-height: 1.2; }
     li { margin: .75rem 0; }
+    form { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+    input { box-sizing: border-box; width: 18rem; max-width: 100%; min-height: 3rem; padding: .75rem 1rem; border: 1px solid #a6b3c8; border-radius: .4rem; font: inherit; font-size: 1.125rem; color: inherit; }
+    input:focus-visible { outline: 2px solid #174bb3; outline-offset: 2px; }
     button { background: #174bb3; color: white; border: 0; border-radius: .4rem; padding: .7rem 1rem; cursor: pointer; font: inherit; }
     button:disabled { opacity: .65; cursor: wait; }
     pre { padding: 1rem; background: #eef2f8; white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -22,6 +25,10 @@
     <a href="{{ url_for('page_welcome') }}">Welcome message</a>
     <a href="{{ url_for('page_health') }}">Server health</a>
   </nav>
+  <h1>Fast API web server</h1>
   <main>{% block content %}{% endblock %}</main>
+  <br/>
+  Served from: {{ request.url }}
+  
 </body>
 </html>
