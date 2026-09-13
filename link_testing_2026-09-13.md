@@ -1,5 +1,7 @@
 # Visible link testing — 2026-09-13
 
+> Visibility correction: Chrome automation executed successfully, but the user reported that no browser testing was visible to them. A headed/visible launch configuration does not establish that its window is on the user’s current desktop. User-visible testing remains unconfirmed; the results below establish automated browser execution only.
+
 ## Scope and method
 
 Fresh test using actual visible Chrome controlled by Playwright MCP against `http://127.0.0.1:8000`. Inspected rendered visible anchors on `/page`, `/page/welcome`, `/page/health`, `/docs`, and `/redoc`. Clicked each link from its source page, including repeated navigation links and self-links. Reloaded the source before each check. Verified destination URLs, navigation responses, and relevant rendered content. This was browser interaction, not a curl-only check.
@@ -48,3 +50,13 @@ No application code was changed. Existing manual edits were preserved. Chrome wa
 ## Result
 
 22 of 23 inventoried visible link instances passed their checks; one ReDoc fragment discrepancy remains. All 16 links on the application's own three template pages passed. This run does not replace the earlier HTTP, form, Refresh, or simulated-error checks documented in [the testing record](testing_record_2026-09-13.md).
+
+## Follow-up: slow headed walkthrough
+
+After the user reported seeing no testing window, process inspection established that the MCP-controlled Chrome had launched with `--headless`. VS Code was running from Snap, but Snap was not established as the cause.
+
+A separate Chrome launch on desktop display `:0` produced a window that the user explicitly confirmed seeing. For the subsequent automated walkthrough, a new Playwright-controlled Chrome window was launched with `headless: false`, `DISPLAY=:0`, and a separate temporary profile. This run used the local Playwright library directly rather than the headless MCP browser.
+
+The walkthrough highlighted each link for 2.5 seconds, clicked it, and left its destination visible for five seconds. All 16 link instances on `/page`, `/page/welcome`, and `/page/health` returned HTTP 200, including the home links to Swagger, ReDoc, and GitHub. Welcome and health page destinations also rendered their successful JavaScript results. The browser returned to Home and was left open.
+
+Per-link output is saved in [visible_walk_results_2026-09-13.json](visible_walk_results_2026-09-13.json). The user confirmed visibility of the initial standalone window; this record does not imply a separate confirmation that they watched every automated click. Internal documentation anchors were not repeated in this slow run; their earlier results and the ReDoc discrepancy remain above.

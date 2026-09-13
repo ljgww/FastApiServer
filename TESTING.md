@@ -1,5 +1,7 @@
 # Testing guide
 
+> Visibility correction: Chrome automation executed successfully, but the user reported that no browser testing was visible to them. A headed/visible launch configuration does not establish that its window is on the user’s current desktop. User-visible testing remains unconfirmed; the results below establish automated browser execution only.
+
 The project has been checked using HTTP requests and an actual Chrome browser controlled through Playwright MCP. These are separate kinds of verification: HTTP checks do not execute page JavaScript or exercise forms and buttons.
 
 See [the testing record](testing_record_2026-09-13.md) for completed checks, evidence, and limitations.

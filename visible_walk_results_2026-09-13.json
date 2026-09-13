@@ -1,0 +1,114 @@
+[
+  {
+    "source": "/page",
+    "label": "Home",
+    "href": "http://127.0.0.1:8000/page",
+    "url": "http://127.0.0.1:8000/page",
+    "status": 200
+  },
+  {
+    "source": "/page",
+    "label": "Welcome message",
+    "href": "http://127.0.0.1:8000/page/welcome",
+    "url": "http://127.0.0.1:8000/page/welcome",
+    "status": 200
+  },
+  {
+    "source": "/page",
+    "label": "Server health",
+    "href": "http://127.0.0.1:8000/page/health",
+    "url": "http://127.0.0.1:8000/page/health",
+    "status": 200
+  },
+  {
+    "source": "/page",
+    "label": "Welcome message",
+    "href": "http://127.0.0.1:8000/page/welcome",
+    "url": "http://127.0.0.1:8000/page/welcome",
+    "status": 200
+  },
+  {
+    "source": "/page",
+    "label": "Server health",
+    "href": "http://127.0.0.1:8000/page/health",
+    "url": "http://127.0.0.1:8000/page/health",
+    "status": 200
+  },
+  {
+    "source": "/page",
+    "label": "API documentation",
+    "href": "http://127.0.0.1:8000/docs",
+    "url": "http://127.0.0.1:8000/docs",
+    "status": 200
+  },
+  {
+    "source": "/page",
+    "label": "API documentation (alternative)",
+    "href": "http://127.0.0.1:8000/redoc",
+    "url": "http://127.0.0.1:8000/redoc",
+    "status": 200
+  },
+  {
+    "source": "/page",
+    "label": "GitHub repo",
+    "href": "https://github.com/ljgww/FastApiServer",
+    "url": "https://github.com/ljgww/FastApiServer",
+    "status": 200
+  },
+  {
+    "source": "/page/welcome",
+    "label": "Home",
+    "href": "http://127.0.0.1:8000/page",
+    "url": "http://127.0.0.1:8000/page",
+    "status": 200
+  },
+  {
+    "source": "/page/welcome",
+    "label": "Welcome message",
+    "href": "http://127.0.0.1:8000/page/welcome",
+    "url": "http://127.0.0.1:8000/page/welcome",
+    "status": 200
+  },
+  {
+    "source": "/page/welcome",
+    "label": "Server health",
+    "href": "http://127.0.0.1:8000/page/health",
+    "url": "http://127.0.0.1:8000/page/health",
+    "status": 200
+  },
+  {
+    "source": "/page/welcome",
+    "label": "http://127.0.0.1:8000/api/welcome",
+    "href": "http://127.0.0.1:8000/api/welcome",
+    "url": "http://127.0.0.1:8000/api/welcome",
+    "status": 200
+  },
+  {
+    "source": "/page/health",
+    "label": "Home",
+    "href": "http://127.0.0.1:8000/page",
+    "url": "http://127.0.0.1:8000/page",
+    "status": 200
+  },
+  {
+    "source": "/page/health",
+    "label": "Welcome message",
+    "href": "http://127.0.0.1:8000/page/welcome",
+    "url": "http://127.0.0.1:8000/page/welcome",
+    "status": 200
+  },
+  {
+    "source": "/page/health",
+    "label": "Server health",
+    "href": "http://127.0.0.1:8000/page/health",
+    "url": "http://127.0.0.1:8000/page/health",
+    "status": 200
+  },
+  {
+    "source": "/page/health",
+    "label": "http://127.0.0.1:8000/health",
+    "href": "http://127.0.0.1:8000/health",
+    "url": "http://127.0.0.1:8000/health",
+    "status": 200
+  }
+]

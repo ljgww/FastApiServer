@@ -1,5 +1,7 @@
 # Testing record — 2026-09-13
 
+> Visibility correction: Chrome automation executed successfully, but the user reported that no browser testing was visible to them. A headed/visible launch configuration does not establish that its window is on the user’s current desktop. User-visible testing remains unconfirmed; the results below establish automated browser execution only.
+
 Follow-up: [Visible link testing](link_testing_2026-09-13.md) records a fresh browser run across all five HTML pages, including the GitHub destination and documentation anchors/download.
 
 ## Earlier HTTP checks (reported in the handoff)
