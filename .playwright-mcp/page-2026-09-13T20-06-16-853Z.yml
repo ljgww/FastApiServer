@@ -1,0 +1,38 @@
+- generic [ref=f5e4]:
+  - generic [ref=f5e7]:
+    - generic [ref=f5e8]:
+      - heading "FastAPI Server 0.1.0 OAS 3.1" [level=1] [ref=f5e9]:
+        - text: FastAPI Server
+        - generic [ref=f5e10]:
+          - generic [ref=f5e11]: 0.1.0
+          - generic [ref=f5e13]: OAS 3.1
+      - link "/openapi.json" [ref=f5e15] [cursor=pointer]:
+        - /url: /openapi.json
+    - paragraph [ref=f5e19]: A minimal API skeleton.
+  - main [ref=f5e20]:
+    - generic [ref=f5e25]:
+      - heading [level=3] [ref=f5e26] [cursor=pointer]:
+        - link "default" [ref=f5e27]:
+          - /url: "#/default"
+        - button "Collapse operation" [expanded] [ref=f5e28]
+      - generic [ref=f5e32]:
+        - generic [ref=f5e35] [cursor=pointer]:
+          - button "GET /health Health" [ref=f5e36]:
+            - generic [ref=f5e37]: GET
+            - generic [ref=f5e38]:
+              - link "/health" [ref=f5e40]:
+                - /url: "#/default/health_health_get"
+              - generic [ref=f5e41]: Health
+          - generic "Copy path to clipboard":
+            - button "Copy path to clipboard" [ref=f5e42]
+          - button "get /health" [ref=f5e46]
+        - generic [ref=f5e51] [cursor=pointer]:
+          - button "GET /api/welcome Api Welcome" [ref=f5e52]:
+            - generic [ref=f5e53]: GET
+            - generic [ref=f5e54]:
+              - link "/api/welcome" [ref=f5e56]:
+                - /url: "#/default/api_welcome_api_welcome_get"
+              - generic [ref=f5e58]: Api Welcome
+          - generic "Copy path to clipboard":
+            - button "Copy path to clipboard" [ref=f5e59]
+          - button "get /api/welcome" [ref=f5e63]

@@ -53,6 +53,8 @@ After pulling these changes, rerun `.venv/bin/python -m pip install -r requireme
 
 ## Quick check
 
+See [TESTING.md](TESTING.md) for browser testing instructions and [the testing record](testing_record_2026-09-13.md) for completed HTTP and Chrome checks.
+
 With the server running, open another terminal and run:
 
 ```bash

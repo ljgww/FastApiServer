@@ -1,0 +1,46 @@
+- generic [active] [ref=f1e1]:
+  - navigation "Main navigation" [ref=f1e2]:
+    - link "Home" [ref=f1e3] [cursor=pointer]:
+      - /url: http://127.0.0.1:8000/page
+    - link "Welcome message" [ref=f1e4] [cursor=pointer]:
+      - /url: http://127.0.0.1:8000/page/welcome
+    - link "Server health" [ref=f1e5] [cursor=pointer]:
+      - /url: http://127.0.0.1:8000/page/health
+  - heading "Fast API web server" [level=1] [ref=f1e6]
+  - main [ref=f1e7]:
+    - heading "Hello, Visitor!" [level=2] [ref=f1e8]
+    - paragraph [ref=f1e9]: This page merges Python values into a Jinja2 template. Enter a name to try it.
+    - generic [ref=f1e10]:
+      - generic [ref=f1e11]: Your name
+      - textbox "Your name" [ref=f1e12]: Visitor
+      - button "Say hello" [ref=f1e13] [cursor=pointer]
+    - heading "Explore the API" [level=2] [ref=f1e14]
+    - list [ref=f1e15]:
+      - listitem [ref=f1e16]:
+        - link "Welcome message" [ref=f1e17] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/page/welcome
+        - text: — read the message from
+        - code [ref=f1e18]: GET /api/welcome
+        - text: .
+      - listitem [ref=f1e19]:
+        - link "Server health" [ref=f1e20] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/page/health
+        - text: — read the status from
+        - code [ref=f1e21]: GET /health
+        - text: .
+      - listitem [ref=f1e22]:
+        - link "API documentation" [ref=f1e23] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/docs
+        - text: — explore and try the endpoints at
+        - code [ref=f1e24]: /docs
+        - text: .
+      - listitem [ref=f1e25]:
+        - link "API documentation (alternative)" [ref=f1e26] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000/redoc
+        - text: — explore and try the endpoints at
+        - code [ref=f1e27]: /redoc
+        - text: .
+      - listitem [ref=f1e28]:
+        - link "GitHub repo" [ref=f1e29] [cursor=pointer]:
+          - /url: https://github.com/ljgww/FastApiServer
+  - text: "Served from: http://127.0.0.1:8000/page"
